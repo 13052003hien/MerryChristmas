@@ -1,8 +1,30 @@
 'use client'
 
-import React, { useState } from 'react'
+import React, { useState, createContext, useContext } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { useSearch } from './ChristmasScene'
+
+// Create a context for search
+const SearchContext = createContext<{
+  searchTerm: string
+  setSearchTerm: (term: string) => void
+} | null>(null)
+
+export const useSearch = () => {
+  const context = useContext(SearchContext)
+  if (!context) {
+    throw new Error('useSearch must be used within SearchProvider')
+  }
+  return context
+}
+
+export const SearchProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+  const [searchTerm, setSearchTerm] = useState('')
+  return (
+    <SearchContext.Provider value={{ searchTerm, setSearchTerm }}>
+      {children}
+    </SearchContext.Provider>
+  )
+}
 
 export default function SearchBar() {
   const { searchTerm, setSearchTerm } = useSearch()
