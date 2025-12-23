@@ -29,10 +29,20 @@ export default function Card({ card, onClick, isSelected }: CardProps) {
       position={card.position}
       rotation={card.rotation}
       animate={{
-        scale: isSelected ? 1.5 : hovered ? 1.05 : 1,
+        scale: hovered ? 1.1 : 1,
       }}
       transition={{ duration: 0.3 }}
     >
+      {/* Dây treo card */}
+      <mesh position={[0, 0.12, 0]}>
+        <cylinderGeometry args={[0.003, 0.003, 0.15]} />
+        <meshStandardMaterial
+          color="#CD7F32"
+          metalness={0.7}
+          roughness={0.2}
+        />
+      </mesh>
+
       <mesh
         ref={meshRef}
         onClick={(e) => {
@@ -49,46 +59,60 @@ export default function Card({ card, onClick, isSelected }: CardProps) {
           document.body.style.cursor = 'auto'
         }}
       >
-        <planeGeometry args={[0.35, 0.45]} />
+        <planeGeometry args={[0.20, 0.26]} />
         <meshStandardMaterial
-          color={hovered ? '#ffffff' : 'rgba(240, 240, 240, 0.95)'}
-          metalness={0.1}
-          roughness={0.3}
+          color={hovered ? '#ffffff' : '#f8f8f8'}
+          metalness={0.3}
+          roughness={0.1}
           side={THREE.DoubleSide}
-          transparent
-          opacity={0.95}
+          emissive="#ffffff"
+          emissiveIntensity={hovered ? 0.4 : 0.1}
         />
       </mesh>
 
-      {/* Viền vàng mỏng */}
-      <mesh position={[0, 0, -0.005]}>
-        <planeGeometry args={[0.37, 0.47]} />
+      {/* Viền vàng nổi bật */}
+      <mesh position={[0, 0, -0.003]}>
+        <planeGeometry args={[0.24, 0.30]} />
         <meshStandardMaterial
           color="#FFD700"
-          metalness={0.9}
-          roughness={0.1}
+          metalness={1}
+          roughness={0.05}
           side={THREE.DoubleSide}
           emissive="#FFD700"
-          emissiveIntensity={hovered ? 0.5 : 0.2}
+          emissiveIntensity={hovered ? 1.2 : 0.8}
+        />
+      </mesh>
+      
+      {/* Shadow layer */}
+      <mesh position={[0, 0, -0.006]}>
+        <planeGeometry args={[0.26, 0.32]} />
+        <meshBasicMaterial
+          color="#000000"
+          transparent
+          opacity={0.3}
+          side={THREE.DoubleSide}
         />
       </mesh>
 
       {/* Nội dung thẻ */}
       <Html
         transform
-        occlude
+        occlude="blending"
         position={[0, 0, 0.01]}
+        distanceFactor={0.25}
+        zIndexRange={[0, 0]}
         style={{
-          width: '90px',
+          width: '55px',
           pointerEvents: 'none',
           userSelect: 'none',
+          opacity: hovered ? 1 : 0.9,
         }}
       >
-        <div className="text-center p-1">
-          <div className="w-full h-10 bg-gradient-to-br from-amber-100 to-amber-300 rounded flex items-center justify-center mb-0.5">
-            <div className="text-lg">{getEmoji(card.name)}</div>
+        <div className="text-center p-0.5">
+          <div className="w-full h-5 bg-gradient-to-br from-amber-100 to-amber-300 rounded flex items-center justify-center mb-0.5">
+            <div className="text-xs">{getEmoji(card.name)}</div>
           </div>
-          <h3 className="font-semibold text-[10px] text-gray-900">{card.name}</h3>
+          <h3 className="font-semibold text-[6px] text-gray-900 leading-tight">{card.name}</h3>
         </div>
       </Html>
 
