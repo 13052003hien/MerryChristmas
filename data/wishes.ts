@@ -80,6 +80,47 @@ export const wishCards: WishCard[] = [
     position: [0, 0, 0],
     rotation: [0, 0, 0],
   },
+  {
+    id: '10',
+    name: '',
+    message: '🎄 Thank you for being there in both good and hard times. This Christmas, may you receive the same love you’ve given to others.',
+    image: 'https://i.pinimg.com/736x/da/47/ce/da47ce8197fd4da0710a8a1df1d93197.jpg',
+    position: [0, 0, 0],
+    rotation: [0, 0, 0],
+  },
+  {
+    id: '11',
+    name: '',
+    message: '🎄 May this Christmas gently heal the tiredness you’ve quietly carried all year.',
+    image: 'https://i.pinimg.com/1200x/50/1d/66/501d66b44288753ab0b59914dbeac54f.jpg',
+    position: [0, 0, 0],
+    rotation: [0, 0, 0],
+  },
+  {
+    id: '12',
+    name: '',
+    message: '🎄 Wishing you a Christmas slow enough to feel, deep enough to remember, and warm enough to smile about later.',
+    image: 'https://i.pinimg.com/1200x/b1/d6/70/b1d67005c314a41e86c235b5a5064e3c.jpg',
+    position: [0, 0, 0],
+    rotation: [0, 0, 0],
+  },
+  {
+    id: '13',
+    name: '',
+    message: '🎄 This Christmas, I hope you learn to be gentler with yourself.',
+    image: 'https://i.pinimg.com/1200x/e9/af/b4/e9afb470717f2e85e622582aa9f84ed2.jpg',
+    position: [0, 0, 0],
+    rotation: [0, 0, 0],
+  },
+  {
+    id: '14',
+    name: '',
+    message: '🎄 Wishing you a peaceful, warm Christmas and a hopeful year ahead.',
+    image: 'https://i.pinimg.com/736x/ae/a6/e6/aea6e6e702469b4f6d74eeba2c560e47.jpg',
+    position: [0, 0, 0],
+    rotation: [0, 0, 0],
+  },
+
 ]
 
 // Tính toán vị trí xoắn ốc cho các thẻ - gắn gần cây thông hơn
