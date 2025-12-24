@@ -86,10 +86,10 @@ export default function ChristmasTree() {
     if (particlesRef.current && particlesRef.current.material) {
       const material = particlesRef.current.material as THREE.PointsMaterial
       // Nhấp nháy mạnh và nhanh hơn
-      material.opacity = 0.7 + Math.sin(clock.elapsedTime * 2.5) * 0.3
+      material.opacity = 0.7 + Math.sin(clock.elapsedTime * 0.8) * 0.3
       
       // Xoay nhẹ cây thông
-      particlesRef.current.rotation.y = Math.sin(clock.elapsedTime * 0.1) * 0.05
+      particlesRef.current.rotation.y = Math.sin(clock.elapsedTime * 0.2) * 0.1
     }
     
     // Animation cho ornaments
